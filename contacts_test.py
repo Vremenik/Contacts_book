@@ -1,5 +1,3 @@
-
-
 class Contact(object):
     name = None
     number = None
@@ -50,5 +48,3 @@ if __name__ == '__main__':
 
     search_number = input("number: ")
     book.search_by_number(search_number)
-
-
