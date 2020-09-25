@@ -1,4 +1,4 @@
-contacts = list()
+
 
 class Contact(object):
     name = None
@@ -10,31 +10,45 @@ class Contact(object):
     def number(self):
         self.number = input("Какой у вас номер телефона?: ")
 
-contact1 = Contact()
-contact1.name()
-contact1.number()
 
-contact2 = Contact()
-contact2.name()
-contact2.number()
+class Contact_book():
+    contacts = list()
 
-contacts.append(contact1)
-contacts.append(contact2)
+    def add(self,contact):
+        self.contacts.append(contact)
 
-print("Данные сохранены")
+    def print_contacts(self):
+        print("Your book:")
+        for contact in self.contacts:
+            print("--------")
+            print(contact.name)
+            print(contact.number)
+    def search_by_number(self, user_number):
+        for contact in self.contacts:
+            if contact.number == user_number:
+                print(contact.name)
+                return
+        print("Not found")
 
-while True:
-    a = input("Введите ваше имя: ")
-    if a == contact1.name:
-        print("Ваш номер: " + str(contact1.number))
 
-    if a == contact2.name:
-            print("Ваш номер: " + str(contact2.number))
+if __name__ == '__main__':
+    book = Contact_book()
 
-    if a == str(0):
-        break
+    contact1 = Contact()
+    contact1.name()
+    contact1.number()
 
-    if not a == contact1.name and not a == contact2.name and not a == str(0):
-        print("Такого имени нет в базе данных")
+    book.add(contact1)
 
-    
+    contact2 = Contact()
+    contact2.name()
+    contact2.number()
+
+    book.add(contact2)
+
+    book.print_contacts()
+
+    search_number = input("number: ")
+    book.search_by_number(search_number)
+
+
