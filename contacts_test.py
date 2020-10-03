@@ -1,65 +1,45 @@
-contacts = [
-    {
-        "name": "Pavel",
-        "phone": "456"
-    },
-    {
-        "name": "Vlad",
-        "phone": "123"
-    },
-]
+class Contact(object):
+    name = None
+    number = None
 
-FORMAT_STR = '{:<15} {:>12}'
+    def name(self):
+        self.name = input("Как вас зовут?: ")
 
+    def number(self):
+        self.number = input("Какой у вас номер телефона?: ")
 
-def list(contacts):
-    print(FORMAT_STR.format('Name', 'Phone'))
-    for contact in contacts:
-        print(FORMAT_STR.format(
-            contact['name'],
-            contact['phone']
-        ))
+class Contact_book():
+    contacts = []
 
+    def list(self):
+        print("Your book:")
+        for contact in contacts:
+            print("--------")
+            print(contact.name)
+            print(contact.number)
 
-def find(contacts):
-    print("Введите имя контакта:")
-    name = input("> ")
+    def find(self, user_number):
+        for contact in self.contacts:
+            if contact.number == user_number:
+                print(contact.name)
+                return
+        print("Not found")
 
-    for contact in contacts:
-        if contact['name'] == name:
-            print(FORMAT_STR.format(
-                contact['name'],
-                contact['phone']
-            ))
-            break
-    else:
         print("Контакт не найден")
 
 
-def delete(contacts):
-    print("Введите контакт: ")
-    name = input('> ')
-    for contact in contacts:
-        if contact['name'] == name:
-            print("Вы хотите удалить контакт %s (yes/no)?: " % name)
-            name_del = input('> ')
-            if name_del == 'yes':
-                contacts.remove(contact)
-                print("Вы удалили контакт %s " % name)
+    def add(self, contact):
+        self.contacts.append(contact)
+
+contact1 = Contact()
+contact1.name()
+contact1.number()
+
+contact2 = Contact()
+contact2.name()
+contact2.number()
 
 
-def add(contacts):
-    print("Введите имя контакта:")
-    name = input("> ")
-    print("Введите телефон контакта:")
-    phone = input("> ")
-    new_contact = {
-        'name': name,
-        'phone': phone
-    }
-    contacts.append(new_contact)
-
-    print('Контакт сохранён')
 
 
 print("Добро пожаловать в телефонную книгу.")
@@ -75,16 +55,18 @@ while True:
     print("\nВведите команду: ")
     command = input('> ')
     if command == 'list':
-        list(contacts)
+        list()
     elif command == 'find':
-        find(contacts)
+        find()
     elif command == 'add':
-        add(contacts)
+        add()
     elif command == 'del':
-        delete(contacts)
+        delete()
     elif command == 'edit':
-        edit(contacts)
+        edit()
     elif command == 'exit':
         break
     else:
         print("Неизвестная команда")
+
+
