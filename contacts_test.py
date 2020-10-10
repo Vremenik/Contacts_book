@@ -27,7 +27,7 @@ class Contact_book():
             print(contact.number)
 
     def find_by_number(self):
-        user_number = input("Введите номер пользователя: ")
+        user_number = input("Введите номер контакта: ")
         for contact in self.contacts:
             if contact.number == user_number:
                 print(contact.name)
@@ -37,7 +37,7 @@ class Contact_book():
         print("Контакт не найден")
 
     def find_by_name(self):
-        user_name = input("Введите имя пользователя: ")
+        user_name = input("Введите имя контакта: ")
         for contact in self.contacts:
             if contact.name == user_name:
                 print(contact.number)
@@ -67,7 +67,7 @@ class Contact_book():
                     print("Вы удалили контакт %s " % name)
 
     def edit(self):
-        print("Введите имя контакта: ")
+        print("Введите имя контакт: ")
         name = input('> ')
         for contact in self.contacts:
             if contact.name == name:
